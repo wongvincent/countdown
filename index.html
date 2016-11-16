@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COUNTDOWN to Dec 26</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div id="countdown"></div>
+</body>
+
+<script>
+    function calculateCountdown() {
+        // year, month-1, day, hours, minutes, seconds, milliseconds
+        var dateOfEvent = new Date(2016, 11, 26, 0, 0, 0, 0);
+        var millisecondsRemaining = dateOfEvent - Date.now();
+        var millisecondsInADay = 24*60*60*1000;
+        return (millisecondsRemaining < 0) ? 0 : Math.ceil(millisecondsRemaining / millisecondsInADay);
+    }
+
+
+    document.getElementById("countdown").innerHTML = calculateCountdown() + " days";
+</script>
+</html>

@@ -1,0 +1,17 @@
+body {
+    background-color: #ededed;
+}
+
+#countdown {
+    font-size: 60px;
+    font-size: 20vw;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
