@@ -15,29 +15,25 @@
 <script>
     function setCountdown() {
         // year, month-1, day, hours, minutes, seconds, milliseconds
-        var dateOfEvent = new Date(2016, 11, 26, 0, 0, 0, 0);
-        var millisecondsRemaining = dateOfEvent - Date.now();
+        var dateOfEvent = new Date(2016, 10, 16, 21, 41, 0, 0);
         var millisecondsInADay = 24*60*60*1000;
 
-        var daysRemaining = (millisecondsRemaining < 0) ? 0 : Math.ceil(millisecondsRemaining / millisecondsInADay);
-        if (daysRemaining === 1) {
-            document.getElementById("days").innerHTML = daysRemaining + " day";
-        } else {
-            document.getElementById("days").innerHTML = daysRemaining + " days";
-        }
-
-        if (millisecondsRemaining < 0) {
-            document.getElementById("milliseconds").innerHTML = "";
-        } else {
-            var interval = setInterval(function() {
-                document.getElementById('milliseconds').innerHTML = --millisecondsRemaining + " milliseconds";
-                if (seconds_left <= 0)
-                {
-                    document.getElementById('milliseconds').innerHTML = "";
-                    clearInterval(interval);
+        var interval = setInterval(function() {
+            var millisecondsRemaining = dateOfEvent - Date.now();
+            if (millisecondsRemaining < 0) {
+                document.getElementById("days").innerHTML = "0 days";
+                document.getElementById("milliseconds").innerHTML = "";
+                clearInterval(interval);
+            } else {
+                var daysRemaining = Math.ceil(millisecondsRemaining / millisecondsInADay);
+                if (daysRemaining === 1) {
+                    document.getElementById("days").innerHTML = "1 day";
+                } else {
+                    document.getElementById("days").innerHTML = daysRemaining + " days";
                 }
-            }, 1);
-        }
+                document.getElementById('milliseconds').innerHTML = millisecondsRemaining + " milliseconds";
+            }
+        }, 1);
     }
 
     setCountdown();
