@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>COUNTDOWN to Dec 23</title>
+    <title>COUNTDOWN</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -14,10 +14,16 @@
 
 <script>
     function setCountdown() {
-        // year, month-1, day, hours, minutes, seconds, milliseconds
-        var dateOfEvent = new Date(2017, 11, 23, 0, 0, 0, 0);
-        var millisecondsInADay = 24*60*60*1000;
+        var year = 2018;
+        var month = 8;
+        var day = 22;
+        var hours = 0;
+        var minutes = 0;
+        var seconds = 0;
+        var milliseconds = 0;
 
+        var dateOfEvent = new Date(year, month - 1, day, hours, minutes, seconds, milliseconds);
+        
         var interval = setInterval(function() {
             var millisecondsRemaining = dateOfEvent - Date.now();
             if (millisecondsRemaining < 0) {
@@ -25,6 +31,7 @@
                 document.getElementById("milliseconds").innerHTML = "";
                 clearInterval(interval);
             } else {
+                var millisecondsInADay = 24*60*60*1000;
                 var daysRemaining = Math.ceil(millisecondsRemaining / millisecondsInADay);
                 if (daysRemaining === 1) {
                     document.getElementById("days").innerHTML = "1 day";
