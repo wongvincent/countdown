@@ -45,4 +45,44 @@
 
     setCountdown();
 </script>
+    
+    
+<div id="hashtags"></div>
+
+<script>  
+  const defaults = '#goldendoodle #dog #puppy #goldendoodlepuppy #狗 #狗狗 #小狗 #犬 #子犬 #멍스타그램';
+
+  const extras = '#goldendoodles #groodle #pup #puppies #doggy #animal #animals #pet #pets #goldendoodlesofinstagram #doodlelove #goldendoodlesofinsta #doodlesofinstagram #doodlelove #doodletales #clubdoodle #doodleselfie #doodlelife #goldendoodlelove #doodlesofinsta #instadoodle #doodlesofig #goldendoodlesofig #ilovemydoodle #doodlegram #goldendoodleselfie #dogoftheday #doglover #ilovemydog #petstagram #puppylove #puppiesofinstagram #petsofinstagram #dogs_of_instagram #instapuppy #adorable #dogsofig #doglife #doglovers #instagramdogs #weeklyfluff  #lovedogs #bestwoof #dogsofinstaworld #puppygram #puppyoftheday  #instapet #cutedog #cutedogs #dogstagram #vancouverdogs #shadymapledoodles';
+
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    }
+  }
+  
+  (() => {
+    const elem = document.getElementById('hashtags');
+
+    const hashtags = defaults.split(' ');
+   
+    let extrasArray = extras.split(' ');
+    shuffle(extrasArray);
+    
+    let i = 0;
+    while (hashtags.length < 30 && i < extrasArray.length) {
+      const hashtag = extrasArray[i];
+      if (!hashtags.includes(hashtag)) {
+        hashtags.push(hashtag);
+      }
+      i++;
+    }
+    
+    const string = hashtags.join(' ');
+    const hashtagsTextNode = document.createTextNode(string);
+    elem.appendChild(hashtagsTextNode);
+  })();
+</script>
 </html>
