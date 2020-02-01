@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div id="countdown">
+<!--<div id="countdown">
     <div id="days"></div>
     <div id="milliseconds"></div>
-</div>
+</div>-->
 
 <script>
     function setCountdown() {
@@ -65,13 +65,20 @@
   (() => {
     const elem = document.getElementById('hashtags');
 
+    for (let i = 0; i < 5; i++) {
+      const dotTextNode = document.createTextNode('•');
+      elem.appendChild(dotTextNode);
+      const brElem = document.createElement("br");
+      elem.appendChild(brElem);
+    }
+    
+      
     const hashtags = defaults.split(' ');
-   
     let extrasArray = extras.split(' ');
     shuffle(extrasArray);
     
     let i = 0;
-    while (hashtags.length < 30 && i < extrasArray.length) {
+    while (hashtags.length < 30 - 1 && i < extrasArray.length) { //purposely 1 less than the max of 30
       const hashtag = extrasArray[i];
       if (!hashtags.includes(hashtag)) {
         hashtags.push(hashtag);
