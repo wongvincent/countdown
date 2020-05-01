@@ -6,10 +6,12 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<!--<div id="countdown">
+<div id="countdown">
     <div id="days"></div>
     <div id="milliseconds"></div>
 </div>
+</body>
+
 <script>
     function setCountdown() {
         var year = 2018;
@@ -19,6 +21,7 @@
         var minutes = 0;
         var seconds = 0;
         var milliseconds = 0;
+
         var dateOfEvent = new Date(year, month - 1, day, hours, minutes, seconds, milliseconds);
         
         var interval = setInterval(function() {
@@ -39,65 +42,7 @@
             }
         }, 1);
     }
+
     setCountdown();
-</script>-->
-    
-    
-<div id="hashtags" style="margin: 100px; padding: 100px;"></div>
-    
-<div id="location">#vancouverdogs #dogsofvancouver #dogsofcanada #vancouver #pnwdogs #vancitydogs</div>
-
-<script>  
-  const defaults = ['goldendoodle', 'goldendoodlepuppy', 'doodlepuppy'];
-
-  //  '狗', '狗狗', '小狗', '犬', '子犬'
-  const extras = [
-       'goldendoodles', 'groodle', 'pup', 'puppies', 'doggy', 'goldendoodlesofinstagram', 'doodlelove', 'goldendoodlesofinsta',
-       'doodlesofinstagram', 'doodlelove', 'doodletales','clubdoodle', 'doodleselfie', 'doodlelife', 'goldendoodlelove',
-       'doodlesofinsta', 'instadoodle', 'doodlesofig', 'goldendoodlesofig', 'ilovemydoodle', 'doodlegram', 'goldendoodleselfie', 'dogoftheday', 'doglover', 'ilovemydog', 'petstagram', 'puppylove', 'puppiesofinstagram', 'petsofinstagram', 'dogs_of_instagram', 'instapuppy', 'dogsofig', 'doglife', 'doglovers', 'instagramdogs', 'weeklyfluff', 'lovedogs', 'bestwoof', 'dogsofinstaworld', 'puppygram', 'puppyoftheday', 'instapet', 'cutedog', 'cutedogs', 'dogstagram', 'puppyoftheday', 'puppylover', 'puppylovers', 'doodlesofig', 'doodlesoftheworld', 'doodletales', 'doodleoftheday', 'doodledailyposts', 'doodlepup', 'puppies', 'pupper', 'puppylover', 'puppygram', 'puppiesofig', 'mediumgoldendoodle', 'doodledailyposts', 'delightfulgoldendoodles', 'dailybark', 'goldendoodlesdaily', 'dogsofinstagram', 'hereforthedoods', 'doodlelove', 'doodlelovers', 'doodleoftheday', 'doodleselfie', 'goldendoodle_daily', 'goldendoodlesofinstagram', 'dogscorner', 'dogsadventures', 'puppyofinstagram', 'puppysofinstagram',
-       'hereforthedoods', 'delightfulgoldendoodles', 'pupperino', 'adorabledog', 'dogmodels', 'dailypuppy', 'oodlesofdoodles',
-       'goldendoodlecentral', 'goldendoodlelife', 'dogplay', 
-  ];
-  
-  const shuffleInPlace = (arr) => {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * i);
-      const temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-  };
-  
-  (() => {
-    const elem = document.getElementById('hashtags');
-
-    /*for (let i = 0; i < 3; i++) {
-      const dotTextNode = document.createTextNode('.');
-      elem.appendChild(dotTextNode);
-      const brElem = document.createElement("br");
-      elem.appendChild(brElem);
-    }*/
-    
-    let set = new Set();
-    extras.forEach(extra => {
-      if (extra.trim().length) {
-        set.add(extra);
-      }
-    });
-    
-    const setTurnedArray = [...set];
-    shuffleInPlace(setTurnedArray);
-    
-    const result = defaults.map( d => '#' + d);
-    const totalHashtags = Math.floor(Math.random() * 7 + 19); // number between 19 and 25
-    for (let i = 0; i <= totalHashtags - defaults.length - 1; i++) {
-      result.push('#' + setTurnedArray[i]);
-    }
-    
-   // shuffleInPlace(result);
-    const hashtagsTextNode = document.createTextNode(result.join(' '));
-    elem.appendChild(hashtagsTextNode);
-  })();
 </script>
-</body>
 </html>
