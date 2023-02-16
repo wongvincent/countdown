@@ -14,14 +14,14 @@ body {
     transform: translate(-50%, -50%)
 }
 
-#days {
+#large {
     -webkit-animation: pulse 2s;
     -webkit-animation-iteration-count: infinite;
     font-size: 60px;
     font-size: 20vw;
 }
 
-#milliseconds {
+#tiny {
     font-size: 10px;
     text-align: right;
 }
