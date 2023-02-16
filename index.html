@@ -7,40 +7,72 @@
 </head>
 <body>
 <div id="countdown">
-    <div id="days"></div>
-    <div id="milliseconds"></div>
+    <div id="large"></div>
+    <div id="tiny"></div>
 </div>
 </body>
 
 <script>
-    function setCountdown() {
-        var year = 2023;
-        var month = 3;
-        var day = 22;
-        var hours = 10;
-        var minutes = 0;
-        var seconds = 0;
-        var milliseconds = 0;
+    const target = {
+        year: 2023,
+        month: 3,
+        day: 22,
+        hours: 8,
+        minutes: 0
+    };
 
-        var dateOfEvent = new Date(year, month - 1, day, hours, minutes, seconds, milliseconds);
+    function setCountdown() {
+        const eventDate = new Date(target.year, target.month - 1, target.day, target.hours, target.minutes);
         
-        var interval = setInterval(function() {
-            var millisecondsRemaining = dateOfEvent - Date.now();
+        const millisecondsInASecond = 1000;
+        const millisecondsInAMinute = 60 * millisecondsInASecond;
+        const millisecondsInAnHour = 60 * millisecondsInAMinute;
+        const millisecondsInADay = 24 * millisecondsInAnHour;
+        
+        const interval = setInterval(function() {
+            const millisecondsRemaining = eventDate - Date.now();
+            
             if (millisecondsRemaining < 0) {
-                document.getElementById("days").innerHTML = "0 days";
-                document.getElementById("milliseconds").innerHTML = "";
+                setLargeText("🎉 🎉 🎉");
+                setTinyText("");
                 clearInterval(interval);
-            } else {
-                var millisecondsInADay = 24*60*60*1000;
-                var daysRemaining = Math.ceil(millisecondsRemaining / millisecondsInADay);
-                if (daysRemaining === 1) {
-                    document.getElementById("days").innerHTML = "1 day";
-                } else {
-                    document.getElementById("days").innerHTML = daysRemaining + " days";
-                }
-                document.getElementById('milliseconds').innerHTML = "or " + millisecondsRemaining + " milliseconds";
+                return;
+            }
+            
+            setTinyText(`or ${millisecondsRemaining} milliseconds`);
+            
+            const daysRemaining = Math.floor(millisecondsRemaining / millisecondsInADay);
+            if (daysRemaining > 0) {
+                setLargeText(`${daysRemaining} ${daysRemaining === 1 ? "day" : "days"}`);
+                return;
+            }
+            
+            const hoursRemaining = Math.floor((millisecondsRemaining % millisecondsInADay) / millisecondsInAnHour);
+            if (hoursRemaining > 0) {
+                setLargeText(`${hoursRemaining} ${hoursRemaining === 1 ? "hour" : "hours"}`);
+                return;
+            }
+            
+            const minutesRemaining = Math.floor((millisecondsRemaining % millisecondsInAnHour) / millisecondsInAMinute);
+            if (minutesRemaining > 0) {
+                setLargeText(`${minutesRemaining} ${minutesRemaining === 1 ? "minute" : "minutes"}`);
+                return;
+            }
+            
+            const secondsRemaining = Math.floor((millisecondsRemaining % millisecondsInAMinute) / millisecondsInASecond);
+            if (secondsRemaining > 0) {
+                setLargeText(`${secondsRemaining} ${secondsRemaining === 1 ? "second" : "seconds"}`);
+                return;
             }
         }, 1);
+    }
+    
+    function setLargeText(value) {
+        document.getElementById("large").innerHTML = value;
+    }
+    
+    function setTinyText(value) {
+        document.getElementById("tiny").innerHTML = value;
     }
 
     setCountdown();
